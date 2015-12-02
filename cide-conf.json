@@ -1,0 +1,20 @@
+{
+	'main.settings': {
+
+		'rootPath': '/var/cide/',
+		'templatesPath': '/var/cide/templates',
+		'loadPlugins': 'true'
+	},
+	'main.modules': [
+		'core.module.controller.BuildModule',
+		'core.module.controller.EditorModule',
+		'core.module.controller.ProcessIOModule',
+		'core.module.controller.ProjectModule'
+	],
+	'main.widgets': [
+		'menu',
+		'console',
+		'editor',
+		'browser'
+	]
+}

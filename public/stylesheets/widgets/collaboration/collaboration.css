@@ -1,0 +1,29 @@
+#widget-collaboration {
+	
+	padding: 18px 12px;
+}
+
+#widget-collaboration .table {
+
+	overflow: scroll;
+	position: absolute;
+	top: 40px;
+	left: 10px;
+	right: 10px;
+	bottom: 50px;
+	background: white;
+	
+}
+
+#widget-collaboration .input {
+	
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+}
+
+#widget-collaboration #chatInput {
+	
+	width: 70%;
+}

@@ -1,111 +1,204 @@
 // jQuery File Tree Plugin
-//
-// Version 1.01
+// 
+// Heavily modified for the CIDE Project
+// Version X.XX
 //
 // Cory S.N. LaViska
 // A Beautiful Site (http://abeautifulsite.net/)
 // 24 March 2008
 //
-// Visit http://abeautifulsite.net/notebook.php?article=58 for more information
-//
-// Usage: $('.fileTreeDemo').fileTree( options, callback )
-//
-// Options:  root           - root folder to display; default = /
-//           script         - location of the serverside AJAX file to use; default = jqueryFileTree.php
-//           folderEvent    - event to trigger expand/collapse; default = click
-//           expandSpeed    - default = 500 (ms); use -1 for no animation
-//           collapseSpeed  - default = 500 (ms); use -1 for no animation
-//           expandEasing   - easing function to use on expand (optional)
-//           collapseEasing - easing function to use on collapse (optional)
-//           multiFolder    - whether or not to limit the browser to one subfolder at a time
-//           loadMessage    - Message to display while initial tree loads (can be HTML)
-//
-// History:
-//
-// 1.01 - updated to work with foreign characters in directory/file names (12 April 2008)
-// 1.00 - released (24 March 2008)
-//
-// TERMS OF USE
-// 
-// This plugin is dual-licensed under the GNU General Public License and the MIT License and
-// is copyright 2008 A Beautiful Site, LLC. 
-//
-if(jQuery) (function($){
+// Gabriel Féron
+// January 2012
+
+/**
+ * Browser widget
+ */
+cideWidgets.Browser = function() {
+
+	this.name = "browser";
+	this.currentNode = {};
+
+	// Default settings
+	this.o = {};
+	this.o.root = '/';
+	this.o.script = 'file';
+	this.o.folderEvent = 'click';
+	this.o.expandSpeed = 500;
+	this.o.collapseSpeed = 500;
+	this.o.expandEasing = null;
+	this.o.collapseEasing = null;
+	this.o.multiFolder = true;
+	this.o.loadMessage = 'Loading...';
+
+	this.requestTree = function(c, t) {
+
+		this.currentNode = c;
+
+		console.log("Requesting directory: " + t);
+
+		cide.socket.sendMessage(new cideCore.net.NetworkMessage(this.name,
+				"core.module.controller.ProjectModule", "getFileTree", t));
+	}
+
+	this.refreshTree = function(files, c, t) {
+
+		// We need to build the DOM for the file-tree
+		var list = $('<ul />').attr('class', 'jqueryFileTree').attr('style', 'display: none;');
+
+		// Loop through the elements received
+		for ( var idx = 0; idx < files.length; idx++) {
+
+			var file = files[idx];
+
+			var className = {};
+			if (file.isDirectory) {
+				className = "directory collapsed";
+			} else {
+				className = "file ext_" + file.extension;
+			}
+
+			var listElement = $('<li />').attr('class', className);
+
+			var slashPosition = file.filepath.lastIndexOf("/");
+			var filename = {};
+			if (slashPosition != -1) {
+				filename = file.filepath.substr(slashPosition + 1, file.filepath.length);
+			} else {
+				filename = file.filepath;
+			}
+			var listLink = $('<a />').attr('href', '#').attr('rel', file.filepath).text(filename);
+
+			listElement.append(listLink);
+			list.append(listElement);
+		}
+
+		this.showTree(list, c, t);
+	}
+
+	this.showTree = function(newTree, c, t) {
+
+		$(c).find('.start').html('');
+		$(c).append(newTree);
+		if (this.o.root == t)
+			$(c).find('UL:hidden').show();
+		else
+			$(c).find('UL:hidden').slideDown({
+				duration : this.o.expandSpeed,
+				easing : this.o.expandEasing
+			});
+		this.bindTree(this, c);
+	};
+
+	this.bindTree = function(self, t) {
+
+		$(t).find('LI A').bind(this.o.folderEvent, function() {
+			if ($(this).parent().hasClass('directory')) {
+				if ($(this).parent().hasClass('collapsed')) {
+					// Expand
+					if (!self.o.multiFolder) {
+						$(this).parent().parent().find('UL').slideUp({
+							duration : self.o.collapseSpeed,
+							easing : self.o.collapseEasing
+						});
+						$(this).parent().parent().find('LI.directory').removeClass('expanded').addClass('collapsed');
+					}
+					$(this).parent().find('UL').remove(); // cleanup
+
+					self.requestTree($(this).parent(), $(this).attr('rel'));
+
+					$(this).parent().removeClass('collapsed').addClass('expanded');
+				} else {
+					// Collapse
+					$(this).parent().find('UL').slideUp({
+						duration : self.o.collapseSpeed,
+						easing : self.o.collapseEasing
+					});
+					$(this).parent().removeClass('expanded').addClass('collapsed');
+				}
+			} else {
+				self.selectFile($(this).attr('rel'));
+			}
+			return false;
+		});
+		// Prevent A from triggering the # on non-click events
+		if (this.o.folderEvent.toLowerCase != 'click')
+			$(t).find('LI A').bind('click', function() {
+				return false;
+			});
+	};
+
+	/**
+	 * Callback used when a normal file is clicked
+	 */
+	this.selectFile = function(filepath) {
+
+		cide.widgets["editor"].openFile(filepath);
+	}
+
+	this.onLoad = function() {
+
+		cide.socket.registerEvent("projectFileTree", this, function(self, msg) {
+
+			self.refreshTree(msg.body.object, self.currentNode, self.path);
+		});
+		
+		cide.socket.registerEvent("refreshFileTree", this, function(self, msg) {
+
+			this.currentNode = $("#widget-browser");
+			$(this.currentNode).html('<ul class="jqueryFileTree start"><li class="wait">' + self.o.loadMessage + '<li></ul>');
+			self.refreshTree(msg.body.object, self.currentNode, self.path);
+		});
+
+		// Get the initial file list
+		setTimeout(this.resetTree, 100, this);
+	};
 	
-    $.extend($.fn, {
-        fileTree: function(o, h) {
-            // Defaults
-            if( !o ) var o = {};
-            if( o.root == undefined ) o.root = '/';
-            if( o.script == undefined ) o.script = 'file';
-            if( o.folderEvent == undefined ) o.folderEvent = 'click';
-            if( o.expandSpeed == undefined ) o.expandSpeed= 500;
-            if( o.collapseSpeed == undefined ) o.collapseSpeed= 500;
-            if( o.expandEasing == undefined ) o.expandEasing = null;
-            if( o.collapseEasing == undefined ) o.collapseEasing = null;
-            if( o.multiFolder == undefined ) o.multiFolder = true;
-            if( o.loadMessage == undefined ) o.loadMessage = 'Loading...';
-			
-            $(this).each( function() {
-				
-                function showTree(c, t) {
-                    
-                    console.log(t);
-                    
-                    $(c).addClass('wait');
-                    $(".jqueryFileTree.start").remove();
-                    $.post(o.script, {
-                        dir: t
-                    }, function(data) {
-                        $(c).find('.start').html('');
-                        $(c).removeClass('wait').append(data);
-                        if( o.root == t ) $(c).find('UL:hidden').show(); else $(c).find('UL:hidden').slideDown({
-                            duration: o.expandSpeed, 
-                            easing: o.expandEasing
-                        });
-                        bindTree(c);
-                    });
-                }
-				
-                function bindTree(t) {
-                    $(t).find('LI A').bind(o.folderEvent, function() {
-                        if( $(this).parent().hasClass('directory') ) {
-                            if( $(this).parent().hasClass('collapsed') ) {
-                                // Expand
-                                if( !o.multiFolder ) {
-                                    $(this).parent().parent().find('UL').slideUp({
-                                        duration: o.collapseSpeed, 
-                                        easing: o.collapseEasing
-                                    });
-                                    $(this).parent().parent().find('LI.directory').removeClass('expanded').addClass('collapsed');
-                                }
-                                $(this).parent().find('UL').remove(); // cleanup
-                                showTree( $(this).parent(), escape($(this).attr('rel').match( /.*\// )) );
-                                $(this).parent().removeClass('collapsed').addClass('expanded');
-                            } else {
-                                // Collapse
-                                $(this).parent().find('UL').slideUp({
-                                    duration: o.collapseSpeed, 
-                                    easing: o.collapseEasing
-                                });
-                                $(this).parent().removeClass('expanded').addClass('collapsed');
-                            }
-                        } else {
-                            h($(this).attr('rel'));
-                        }
-                        return false;
-                    });
-                    // Prevent A from triggering the # on non-click events
-                    if( o.folderEvent.toLowerCase != 'click' ) $(t).find('LI A').bind('click', function() {
-                        return false;
-                    });
-                }
-                // Loading message
-                $(this).html('<ul class="jqueryFileTree start"><li class="wait">' + o.loadMessage + '<li></ul>');
-                // Get the initial file list
-                showTree( $(this), escape(o.root) );
-            });
-        }
-    });
-	
-})(jQuery);
+	this.resetTree = function(self) {
+
+		self.currentNode = $("#widget-browser");
+		$(this.currentNode).html('<ul class="jqueryFileTree start"><li class="wait">' + self.o.loadMessage + '<li></ul>');
+		self.requestTree(self.currentNode, "/");
+		
+		$.contextMenu({
+		    selector: '.file', 
+		    callback: function(key, options) {
+		        if (key === "delete")
+		        {
+		        	var a = $(this).children().first();
+		        	
+		        	if (confirm("Are you sure you want to delete this file ?"))
+		        	{
+		        		cide.widgets["editor"].deleteFile($(a).attr('rel'));
+		        	}
+		        }
+		    },
+		    items: {
+		        "delete": {name: "Delete", icon: "delete"}
+		    }
+		});
+		
+		$.contextMenu({
+		    selector: '.directory', 
+		    callback: function(key, options) {
+		        if (key === "delete")
+		        {
+		        	var a = $(this).children().first();
+		        	
+		        	if (confirm("Are you sure you want to delete this folder and its content ?"))
+		        	{
+		        		cide.widgets["editor"].deleteFile($(a).attr('rel'));
+		        	}
+		        }
+		    },
+		    items: {
+		        "delete": {name: "Delete", icon: "delete"}
+		    }
+		});
+	};
+
+	this.unLoad = function() {
+
+	};
+};
+
+cide.manager.registerWidget(new cideWidgets.Browser());

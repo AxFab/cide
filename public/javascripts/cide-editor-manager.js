@@ -4,7 +4,7 @@
 function EditorManager() {
 	this.constCheckSaving = 750;
 	this.constCheckUpdate = 2000;
-	this.lineChanged = null;
+	this.lineChanged = new Array();
 	this.change = false;
 	this.lastChange;
 };
@@ -12,34 +12,21 @@ function EditorManager() {
 // Register a change into a line.
 EditorManager.prototype.changeLine = function (line) {
 	console.log ("Add ligne : '"+line+"'");
-	this.lineChanged = line;
-	// this.lastChange = new Date().getTime();
-}
-
-EditorManager.prototype.newLine = function (line) {
-	console.log ("New ligne : '"+line+"'");
-	
+	this.lineChanged["ln" + line] = line;
+	this.change = true;
+	this.lastChange = new Date().getTime();
 }
 
 function updateEditor () {
-	if (CIDE.editorManager.lineChanged != null) {
-		var str = Cide.Editor.getSession().doc.getTextLine (CIDE.editorManager.lineChanged);
-		console.log ("We commit the line [" + CIDE.editorManager.lineChanged + "]: "+ str);
-		var msg = {};
-		msg.message = "addChangeToLine";		
-		var data = {};
-		data.line = CIDE.editorManager.lineChanged;
-		data.text = str;
-		data.cursor = 0;
-		msg.object = JSON.stringify(data);
-		CIDE.server.sendMsg (CIDE.server.getHeader("aceEditor", "Cide.EditorManager"), msg);
-		CIDE.editorManager.lineChanged = null;
+	console.log ("Commit [" + Cide.EditorManager.lineChanged.length + "]");
+	for(i=0;i<Cide.EditorManager.lineChanged.length;i++) {
+		console.log ("Commit line [" + Cide.EditorManager.lineChanged[i] + "]");
 	}
 }
 
 function savingEditor () {
 	updateEditor ();
-	setTimeout(savingEditor, CIDE.editorManager.constCheckSaving);
+	setTimeout(savingEditor, Cide.EditorManager.constCheckSaving);
 }
 
 EditorManager.prototype.activeSave = function () {

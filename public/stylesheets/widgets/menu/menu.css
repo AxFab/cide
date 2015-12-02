@@ -1,20 +1,14 @@
-.brand {
-    
-    background: url('/public/images/icon-32x32.png') no-repeat;
-    background-position: 8px 4px;
-}
-
-#new-project-btn {
-    
-    background-repeat: no-repeat;
-    background: url('/public/images/icons/folder_add.png') no-repeat 8px;
-    padding-left: 32px;
-}
-
 #new-file-btn {
     
     background-repeat: no-repeat;
     background: url('/public/images/icons/page_add.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#new-folder-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/folder_add.png') no-repeat 8px;
     padding-left: 32px;
 }
 
@@ -25,17 +19,10 @@
     padding-left: 32px;
 }
 
-#open-project-btn {
+#delete-file-btn {
     
     background-repeat: no-repeat;
-    background: url('/public/images/icons/folder.png') no-repeat 8px;
-    padding-left: 32px;
-}
-
-#open-file-btn {
-    
-    background-repeat: no-repeat;
-    background: url('/public/images/icons/page.png') no-repeat 8px;
+    background: url('/public/images/icons/page_delete.png') no-repeat 8px;
     padding-left: 32px;
 }
 
@@ -73,13 +60,6 @@
     
     background-repeat: no-repeat;
     background: url('/public/images/icons/page_paste.png') no-repeat 8px;
-    padding-left: 32px;
-}
-
-#delete-btn {
-    
-    background-repeat: no-repeat;
-    background: url('/public/images/icons/page_delete.png') no-repeat 8px;
     padding-left: 32px;
 }
 
@@ -139,9 +119,23 @@
     padding-left: 32px;
 }
 
-.pull-right {
+#account-btn {
     
     background-repeat: no-repeat;
-    background: url('/public/images/icons/user.png') no-repeat 8px 10px;
+    background: url('/public/images/icons/user.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#projects-list-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/application_cascade.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#logout-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/disconnect.png') no-repeat 8px;
     padding-left: 32px;
 }

@@ -1,1 +1,23 @@
-Readme file for CIDE
+  ____ ___ ____  _____ 
+ / ___|_ _|  _ \| ____|
+| |    | || | | |  _|  
+| |___ | || |_| | |___ 
+ \____|___|____/|_____|
+
+CIDE - the "Collaborative Integrated Development Environment" - is a free, open-source and web-based IDE where everything is executed on the server.
+
+
+About the project
+=================
+
+CIDE is centered around the idea that collaboration is very important in computer science. It is designed to enable developers to work on a given piece of code at the same time.
+
+The project was initiated during the last weeks of our engineering studies and is going to endure a lot of refactoring before it's ready for a first alpha release.
+
+More info to come in the next weeks.
+
+
+Origins
+=======
+
+The project was originally developed by four students studying Computer Engineering at ECE Paris (Alexandre Trufanow, Guillaume Brunier, Gabriel Féron and Fabien Bavent).

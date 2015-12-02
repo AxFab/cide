@@ -1,0 +1,35 @@
+#{extends 'static.html' /} #{set title:'CIDE - Login' /}
+
+<div class="container">
+	<div class="row">
+		<div class="span-one-third">
+			<form action="@{UserController.doLogin()}" method="post">
+				<div class="logo">
+					<img src="@{'/public/images/cide.png'}" />
+				</div>
+				<div class="clearfix">
+					<div class="input" style="color: #f00">#{error 'login' /}</div>
+				</div>
+				<div class="clearfix">
+					<div class="input">
+						<input type="text" name="username" value="" class="xlarge" />
+						<div class="help-block">Enter your username</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="input">
+						<input type="password" name="password" value="" class="xlarge" />
+						<div class="help-block">Enter your password</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="input">
+						<input class="btn primary" type="submit"
+							value="Login"> <br
+							style="clear: both; visibility: hidden">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

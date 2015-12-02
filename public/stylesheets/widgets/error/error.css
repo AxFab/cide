@@ -1,0 +1,10 @@
+#widget-error {
+	
+	margin: 10px;
+	margin-top: 50px;
+}
+
+#widget-error-box {
+	
+	z-index: 1000;
+}

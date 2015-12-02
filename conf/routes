@@ -3,30 +3,40 @@
 # ~~~~
 
 # Home page
-GET	/                                       Application.index
-WS	/socket/connect				Socket.connect
+GET /project/list							ProjectController.list
+GET	/		                                DashboardController.index
+POST    /                                   DashboardController.index
+POST	/project/post						ProjectController.post
+GET 	/project/create						ProjectController.create
+POST	/project/doCreate					ProjectController.doCreate
+POST	/project/addUser					ProjectController.addUser
+WS		/socket/connect						SocketController.connect
 
 # Ignore favicon requests
-GET	/favicon.ico                            404
+GET		/favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
-GET	/public/                                staticDir:public
-GET	/data/                                  staticDir:data
+GET		/public/                                staticDir:public
+GET		/data/                                  staticDir:data
 
-# Catch all
-*       /{controller}/{action}                  {controller}.{action}
-
-#Authenticate
-GET		/login				    authenticate.login
-POST	/login				    authenticate.doLogin
-GET		/logout				    authenticate.logout
-
-# Dashboard
-GET     /dashboard                              dashboard.index
+# Authenticate
+GET     /userlogin                              UserController.login
+POST    /userlogin                              UserController.doLogin
+GET		/userlogout                             UserController.logout
 
 # Widget manager
-GET     /widget/{widgetId}/{layoutId}           widgetManager.getWidget
+GET     /widget/{widgetId}/                 WidgetController.get
 
-# Browser widget
-GET     /file                                   browserWidget.index
-POST    /file                                   browserWidget.index
+# Dialog manager
+GET 	/dialog/project-properties			DialogController.projectProperties
+GET 	/dialog/{dialogId}					DialogController.get
+
+# Import CRUD routes
+GET		/admin								module:crud
+
+# Import Secure routes
+*       /									module:secure
+
+# Catch all
+*       /{controller}/{action}             {controller}.{action}
+

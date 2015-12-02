@@ -2,34 +2,100 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         
         <!-- jQuery -->
         <script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.1.min.js'}"></script>
+        
+        <!--JQuery ContextMenu -->
+        <link href="@{'public/stylesheets/jquery.contextMenu.css'}" rel="stylesheet" type="text/css"/>
+        <script src="@{'public/javascripts/jquery.contextMenu.js'}" type="text/javascript"></script>
         
         <!-- Twitter Bootstrap -->
         <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/bootstrap.css'}"/>
         <script type="text/javascript" src="@{'/public/javascripts/bootstrap-dropdown.js'}"></script>
         <script type="text/javascript" src="@{'/public/javascripts/bootstrap-tabs.js'}"></script>
-        
-        <!-- CIDE -->
-        <script type="text/javascript" src="@{'/public/javascripts/cide-layout-manager.js'}"></script>
-        <script type="text/javascript" src="@{'/public/javascripts/cide-srvc.js'}"></script>
-        
-        <script type="text/javascript" src="@{'/public/javascripts/main.js'}"></script>
-        <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}"/>
-        
-        <script type="text/javascript">
-            
-            // Initialize the connection using WebSockets
-            var Cide = {};
-            //Cide.Server = new serverConnect();
-            //Cide.Server.getConnect ("@@{Socket.connect()}");
-            
-        </script>
-        
-        <title>${title}</title>
-    </head>
-    <body>
-        #{doLayout /}
-    </body>
+        <script type="text/javascript" src="@{'/public/javascripts/bootstrap-modal.js'}"></script>
+		        
+		<script type="text/javascript">
+			var cideCore = {};
+		
+			var cideWidgets = {};
+		
+			var cide = {
+				widgets : {},
+				socket : {},
+				settings : {}
+			};
+		</script>
+		
+		<!-- CIDE -->
+		<script type="text/javascript" src="@{'/public/javascripts/cide-common.js'}"></script>
+		<script type="text/javascript" src="@{'/public/javascripts/cide-socket.js'}"></script>
+
+		<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}" />
+
+<script type="text/javascript">
+	$(function() {
+
+		// Initialize the LayoutManager
+		cide.manager = new cideCore.common.LayoutManager();
+
+		// Creation of the WebSockets connection
+		cide.socket = new cideCore.net.WebSocketConnection("${websocketUrl}");
+		cide.socket.openSocket();
+
+		cide.socket.onSocketOpen(function() {
+
+			// Loading the widgets
+			for (w in initWidgets) {
+				cide.manager.addWidget(w, initWidgets[w]);
+			}
+		});
+
+		// Add the widgets
+		var initWidgets = {
+			'menu' : {
+				'layout' : 'header',
+				'html' : 'widget/menu/',
+				'js' : [ '/public/javascripts/widgets/menu/menu.js' ]
+			},
+			'editor' : {
+				'layout' : 'center',
+				'html' : 'widget/editor/',
+				'js' : [ '/public/javascripts/widgets/editor/editor-fat.js']
+			},
+			'console' : {
+				'layout' : 'bottom',
+				'html' : 'widget/console/',
+				'js' : ['/public/javascripts/widgets/console/console-fat.js' ]
+			},
+			'browser' : {
+				'layout' : 'left-1',
+				'html' : 'widget/browser/',
+				'js' : [ '/public/javascripts/widgets/browser/browser.js' ]
+			},
+			'collaboration' : {
+				'layout' : 'left-2',
+				'html' : 'widget/collaboration/',
+				'js' : [ '/public/javascripts/widgets/collaboration/collaboration.js' ]
+			},
+			'error' : {
+				'layout' : 'error',
+				'html' : 'widget/error/',
+				'js' : [ '/public/javascripts/widgets/error/error.js' ]
+			}
+		};
+
+		cide.manager.onLoad(function() {
+
+			console.log("CIDE is ready!");
+		});
+	});
+</script>
+
+<title>${title}</title>
+</head>
+<body>#{doLayout /}
+</body>
 </html>

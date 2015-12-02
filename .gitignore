@@ -3,7 +3,7 @@ tmp/*
 nbproject/*
 data/*
 conf/application.conf
-
+thumb.db
 .classpath
 .project
 .settings
@@ -11,3 +11,4 @@ eclipse
 .hg
 .hgignore
 *~
+*-fat.js

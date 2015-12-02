@@ -1,0 +1,57 @@
+<div id="modal-ajax" class="modal hide fade">
+	<div class="modal-header">
+		<a href="#" class="close">&times;</a>
+		<h3>Project properties</h3>
+	</div>
+	<div class="modal-body">
+
+		<table class="zebra-striped">
+			<tr>
+				<td><b>Name:</b></td>
+				<td>${project.name}</td>
+			</tr>
+
+			<tr>
+				<td><b>Creation date:</b></td>
+				<td>${project.creationDate}</td>
+			</tr>
+
+			<tr>
+				<td><b>URL:</b></td>
+				<td><a href="${project.url}">${project.url}</a></td>
+			</tr>
+
+			<tr>
+				<td><b>Owner:</b></td>
+				<td>${project.owner.firstname} ${project.owner.lastname}
+					(${project.owner})</td>
+			</tr>
+
+			<tr>
+				<td><b>Type:</b></td>
+				<td>${project.type.description}</td>
+			</tr>
+
+			<tr>
+				<td><b>Build-engine:</b></td>
+				<td>${project.type.buildEngine.name} -
+					${project.type.buildEngine.description}</td>
+			</tr>
+
+			<tr>
+				<td rowspan="${project.users.size()+1}"><b>Users</b></td>
+			</tr>
+			#{list items:project.users, as:'user'}
+			<tr>
+				<td>${user.firstname} ${user.lastname} (${user})</td>
+			</tr>
+			#{/list}
+
+		</table>
+
+	</div>
+	<div class="modal-footer">
+		<a href="#" onclick="$('#modal-editor-style').modal('hide');"
+			class="btn primary">Close</a>
+	</div>
+</div>

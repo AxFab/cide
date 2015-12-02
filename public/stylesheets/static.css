@@ -1,0 +1,36 @@
+/**
+ * Stylesheet for static pages (login, project list, new project, etc.)
+ **/
+.container {
+	margin-top: 60px;
+	width: 320px;
+}
+
+form {
+	margin-top: 60px;
+}
+ 
+form .input {
+	margin-left: 0;
+}
+
+input.xlarge {
+	width: 290px;
+}
+
+select.xlarge {
+	width: 300px;
+}
+
+.logo {
+	text-align: center;
+	width: 200px;
+}
+
+.btn.primary {
+	float: right;
+}
+
+.btn.secondary {
+	float: right;	
+}	

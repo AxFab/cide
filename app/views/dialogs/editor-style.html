@@ -1,0 +1,109 @@
+<div id="modal-ajax" class="modal hide fade">
+	<div class="modal-header">
+		<a href="#" class="close">&times;</a>
+		<h3>Editor settings</h3>
+	</div>
+	<div class="modal-body">
+
+		<form>
+			<fieldset>
+
+				<div class="clearfix">
+					<label for="editorStyleSelect">Stylesheet: </label>
+					<div class="input">
+						<select id="modalEditorStyleSelect" class="xlarge"
+							name="editorStyleSelect">
+
+							<option value="chrome">Chrome</option>
+							<option value="clouds">Clouds</option>
+							<option value="clouds_midnight">Clouds Midnight</option>
+							<option value="cobalt">Cobalt</option>
+							<option value="crimson_editor">Crimson Editor</option>
+							<option value="dawn">Dawn</option>
+							<option value="eclipse">Eclipse</option>
+							<option value="idle_fingers">idleFingers</option>
+							<option value="kr_theme">krTheme</option>
+							<option value="merbivore">Merbivore</option>
+							<option value="merbivore_soft">Merbivore Soft</option>
+							<option value="mono_industrial">Mono Industrial</option>
+							<option value="monokai">Monokai</option>
+							<option value="pastel_on_dark">Pastel on dark</option>
+							<option value="solarized_dark">Solarized Dark</option>
+							<option value="solarized_light">Solarized Light</option>
+							<option selected="selected" value="textmate">TextMate</option>
+							<option value="twilight">Twilight</option>
+							<option value="tomorrow">Tomorrow</option>
+							<option value="tomorrow_night">Tomorrow Night</option>
+							<option value="tomorrow_night_blue">Tomorrow Night Blue</option>
+							<option value="tomorrow_night_bright">Tomorrow Night
+								Bright</option>
+							<option value="tomorrow_night_eighties">Tomorrow Night
+								80s</option>
+							<option value="vibrant_ink">Vibrant Ink</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<label for="fontSizeSelect">Font-size: </label>
+					<div class="input">
+						<select id="modalFontSizeSelect" class="xlarge"
+							name="fontSizeSelect">
+
+							<option value="10px">10px</option>
+							<option value="11px">11px</option>
+							<option selected="selected" value="12px">12px</option>
+							<option value="14px">14px</option>
+							<option value="16px">16px</option>
+							<option value="20px">20px</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<label for="modalCodeFoldingSelect">Code folding: </label>
+					<div class="input">
+						<select id="codeFoldingSelect" class="xlarge"
+							name="codeFoldingSelect">
+
+							<option value="manual">Manual</option>
+							<option value="markbegin">Mark begin</option>
+							<option value="markbeginandend">Mark begin and end</option>
+
+						</select>
+					</div>
+				</div>
+				
+				<div class="clearfix">
+					<label for="modalKeybindingsSelect">Code folding: </label>
+					<div class="input">
+						<select id="codeKeybindingsSelect" class="xlarge"
+							name="codeKeybindingsSelect">
+
+							<option value="null">Ace</option>
+							<option value="vim">Vim</option>
+							<option value="emacs">Emacs</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<label for="softTabCheckbox">Code folding: </label>
+					<div class="input">
+						<input id="softTabCheckbox" type="checkbox" value="Use soft-tabs"
+							name="softTabCheckbox">
+					</div>
+				</div>
+
+			</fieldset>
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<a href="#" onclick="$('#modal-editor-style').modal('hide');"
+			class="btn primary">Apply</a>
+	</div>
+</div>

@@ -1,0 +1,122 @@
+#{extends 'static.html' /} #{set title:'CIDE - Project list' /}
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		
+		//Adding user dynamically
+		$('#addUserBtn').click(function (){
+		
+			$.ajax({
+				url: "addUser",
+				context: document.body,
+				type : 'POST',
+				data: "username=" + $('input[name=username]').val(),
+				success: function (result){
+					
+					if (result !== '-1')
+					{
+						$('#clearfixAddUser').removeClass("error");
+						
+						var user = jQuery.parseJSON(result);
+						
+						//Adding user to the hidden table
+						$('<input>').attr({
+							type: 'hidden',
+							name: 'users[]',
+							value: user.username
+						}).appendTo('#userListTableHidden');
+						
+						//Adding user to the table
+						$('#userListTable').append('<tr><td>' + user.username + '</td><td>' + user.firstname + '</td><td>' + user.lastname + '</td><td><a class="btn removeUserBtn" rel="' + user.username + '">Remove</a></td></tr>');
+					}
+					else
+						$('#clearfixAddUser').addClass("error");
+						
+					return false;
+				}
+			});
+		});
+		
+		//Remove user dynamically
+		$('.removeUserBtn').live("click", function () {
+			$('#userListTableHidden input[value=' + $(this).attr("rel") + ']').remove();
+			$(this).parent().parent().remove();
+			return false;
+		});
+	});
+</script>
+
+<div class="container">
+	<div class="row">
+		<div class="span-one-third">
+			<h1>Create a new project</h1>
+			<form action="@{ProjectController.doCreate()}" method="post">
+				<div class="clearfix">
+					<h3>Project info</h3>
+				</div>
+				<div class="clearfix #{error 'name' /}">
+					<div class="input">
+						<input type="text" name="name" value="" class="xlarge" />
+						<div class="help-block">Enter the project name</div>
+					</div>
+				</div>
+				<div class="clearfix #{error 'url' /}">
+					<div class="input">
+						<input type="text" name="url" value="" class="xlarge" />
+						<div class="help-block">Enter the project URL</div>
+					</div>
+				</div>
+				<div class="clearfix #{error 'type' /}">
+					<div class="input">
+						<select class="xlarge" name="type">
+							#{list items:projectTypes, as:'projectType'}
+							<option value="${projectType.name}">${projectType.name}</option>
+							#{/list}
+						</select>
+						<div class="help-block">Choose a project type</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<h3>Users in the project</h3>
+				</div>
+				<div id="clearfixAddUser" class="clearfix">
+					<div class="input">
+						<input type="text" name="username" value="" class="xlarge" />
+						<div class="help-block">Type a username to add</div>
+					</div>
+					<div class="input">
+						<a class="btn" id="addUserBtn">Add this user</a>
+					</div>
+				</div>
+				<div class="clearfix">
+					<table id="userListTable">
+						<tr>
+							<th>User</th>
+							<th>Firstname</th>
+							<th>Lastname</th>
+							<th></th>
+						</tr>
+						#{list items:users, as:'user'}
+						<tr>
+							<td>${user.username}</td>
+							<td>${user.firstname}</td>
+							<td>${user.lastname}</td>
+							<td><a class="btn removeUserBtn" rel="${user.username}">Remove</a></td>
+						</tr>
+						#{/list}
+					</table>
+					<div id="userListTableHidden">
+						#{list items:users, as:'user'}
+							<input type="hidden" name="users[]" value="${user.username}"/>	
+						#{/list}
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="input">
+						<input class="btn primary" type="submit" value="Go!"> <br style="clear: both; visibility: hidden"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

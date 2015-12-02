@@ -1,0 +1,40 @@
+#{extends 'dashboard.html' /}
+#{set title:'CIDE - Dashboard' /}
+
+<div class="topbar">
+    <div class="topbar-inner"> 
+        <div class="container-fluid">
+            <div id="layout-header">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="layout-error"></div>
+
+<div id="layout-left">
+    <ul class="pills">
+		<li class="active"><a href="#layout-left-1">Filetree</a></li>
+		<li><a href="#layout-left-2">Collaboration</a></li>
+    </ul>
+    
+    <div class="pill-content">
+    	<div class="active" id="layout-left-1"></div>
+    	<div id="layout-left-2"></div>
+    </div>
+</div>
+
+<div id="layout-center"></div>
+
+<div id="layout-bottom">
+    <ul class="pills">
+		<li class="active"><a href="#layout-bottom-1">Console</a></li>
+		<li><a href="#layout-bottom-2">Tasks</a></li>
+		<li style="float: right;" class="hide-btn"><a href="#">Show</a></li>
+    </ul>
+    
+    <div class="pill-content">
+    	<div class="active" id="layout-bottom-1"></div>
+    	<div id="layout-bottom-2"></div>
+    </div>
+</div>
+<div id="layout-modals"></div>

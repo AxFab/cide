@@ -1,0 +1,570 @@
+/** Administration area **/
+
+#crud {
+	margin: 0;
+	padding: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	line-height: 18px;
+	color: #111111;
+	background: #efefef;
+	margin-top: 40px;
+}
+
+/** Header **/
+
+#crud #crudHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  overflow: visible;
+  background-color: #222;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222));
+  background-image: -moz-linear-gradient(top, #333333, #222222);
+  background-image: -ms-linear-gradient(top, #333333, #222222);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222));
+  background-image: -webkit-linear-gradient(top, #333333, #222222);
+  background-image: -o-linear-gradient(top, #333333, #222222);
+  background-image: linear-gradient(top, #333333, #222222);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+#crud #crudHeader h1 {
+	margin: 0;
+	font-weight: normal;
+}
+
+#crud #crudHeader h1 a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#crud #crudHeader h1 a:hover {
+	color: #0069d6;
+	text-decoration: none;
+}
+
+/** Breadcrumb **/
+
+#crudBreadcrumb {
+	padding: 5px 20px;
+	font-size: 80%;
+	border-bottom: 1px solid #ddd;
+}
+
+#crudBreadcrumb ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#crudBreadcrumb li {
+	display: inline;
+}
+
+#crudBreadcrumb a {
+	color: #333;
+}
+
+#crudBreadcrumb li:last-child a {
+	color: #888;
+	text-decoration: none;
+}
+
+/** Flash message **/
+
+.crudFlash {
+	padding: 5px 20px;
+	border-bottom: 1px solid #ddd;
+	color: #fff;
+}
+
+.flashError {
+	background: #c00;
+}
+
+.flashSuccess {
+	background:  #0069d6;
+}
+
+/** Content **/
+
+#crud #crudContent {
+	padding: 10px 20px;
+}
+
+#crud #crudContent h2 {
+	color: #222;
+	font-weight: normal;
+	margin-top: 10px;
+	text-shadow: white 1px 1px 0px;
+}
+
+#crud #crudContent a {
+	color: #444;
+}
+
+/** Tables **/
+
+
+#crud #crudContent table {
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  font-size: 13px;
+  border-collapse: collapse;
+}
+
+#crud #crudContent table th, table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+
+#crud #crudContent table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+#crud #crudContent table td {
+  vertical-align: top;
+  border-top: 1px solid #ccc;
+}
+
+#crud #crudContent table tbody th {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+}
+
+#crud #crudContent table {
+  border: 1px solid #ccc;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  /* IE7, collapse table to remove spacing */
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  width: 100%;
+}
+#crud #crudContent table th + th, #crud #crudContent table td + td, #crud #crudContent table th + td {
+  border-left: 1px solid #ccc;
+}
+#crud #crudContent table thead tr:first-child th:first-child, #crud #crudContent table tbody tr:first-child td:first-child {
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+}
+#crud #crudContent table thead tr:first-child th:last-child, #crud #crudContent table tbody tr:first-child td:last-child {
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
+}
+#crud #crudContent table tbody tr:last-child td:first-child {
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
+  border-radius: 0 0 0 4px;
+}
+#crud #crudContent table tbody tr:last-child td:last-child {
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
+  border-radius: 0 0 4px 0;
+}
+
+.crudSortedAsc:after {
+	content: '▼';
+}
+
+.crudSortedDesc:after {
+	content: '▲';
+}
+
+/** Forms **/
+form {
+  margin-bottom: 18px;
+}
+fieldset {
+  margin-bottom: 18px;
+  padding-top: 18px;
+}
+fieldset legend {
+  display: block;
+  padding-left: 150px;
+  font-size: 19.5px;
+  line-height: 1;
+  color: #404040;
+  *padding: 0 0 5px 145px;
+  /* IE6-7 */
+
+  *line-height: 1.5;
+  /* IE6-7 */
+
+}
+form .clearfix {
+  margin-bottom: 18px;
+  zoom: 1;
+}
+form .clearfix:before, form .clearfix:after {
+  display: table;
+  content: "";
+  zoom: 1;
+}
+form .clearfix:after {
+  clear: both;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+}
+label {
+  padding-top: 6px;
+  font-size: 13px;
+  line-height: 18px;
+  float: left;
+  width: 130px;
+  text-align: left;
+  color: #404040;
+}
+form .input {
+  margin-left: 150px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+input,
+textarea,
+select,
+.uneditable-input {
+  display: inline-block;
+  width: 210px;
+  height: 18px;
+  padding: 4px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select {
+  padding: initial;
+}
+input[type=checkbox], input[type=radio] {
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 3px 0;
+  *margin-top: 0;
+  /* IE6-7 */
+
+  line-height: normal;
+  border: none;
+}
+input[type=file] {
+  background-color: #ffffff;
+  padding: initial;
+  border: initial;
+  line-height: initial;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+input[type=button], input[type=reset], input[type=submit] {
+  width: auto;
+  height: auto;
+}
+select, input[type=file] {
+  height: 27px;
+  *height: auto;
+  line-height: 27px;
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+
+}
+select[multiple] {
+  height: inherit;
+  background-color: #ffffff;
+}
+textarea {
+  height: auto;
+}
+.uneditable-input {
+  background-color: #ffffff;
+  display: block;
+  border-color: #eee;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.025);
+  cursor: not-allowed;
+}
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+input, textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input:focus, textarea:focus {
+  outline: 0;
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+input[type=file]:focus, input[type=checkbox]:focus, select:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: 1px dotted #666;
+}
+
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  cursor: not-allowed;
+}
+
+input[type=submit] {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #e6e6e6;
+  background-repeat: no-repeat;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), color-stop(25%, #ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -ms-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: -o-linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  background-image: linear-gradient(#ffffff, #ffffff 25%, #e6e6e6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  padding: 5px 14px 6px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  color: #333;
+  font-size: 13px;
+  line-height: normal;
+  border: 1px solid #ccc;
+  border-bottom-color: #bbb;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  -ms-transition: 0.1s linear all;
+  -o-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+}
+
+input[type=submit]:hover {
+  background-position: 0 -15px;
+  color: #333;
+  text-decoration: none;
+}
+
+input[type=submit]:focus {
+  outline: 1px dotted #666;
+}
+
+.crudField {
+	padding: 10px;
+	border-bottom: 1px solid #eee;
+	position: relative;
+}
+
+.crud_hidden {
+    display: none;
+}
+
+.crudButtons {
+	background: #efefef;
+	text-align: right;
+	margin: 0;
+	padding: 10px;
+}
+
+.crudField .error {
+	color: #c00;
+	padding-left: 10px;
+	position: absolute;
+	top: 15px;
+	font-size: 80%;
+}
+
+.crudField .hasError {
+	color: #c00;
+}
+
+.crudField select[multiple] {
+	max-height: 100px;
+}
+
+.crudField .crudHelp {
+	font-size: 70%;
+	color: #888;
+	display: block;
+	margin-left: 15%;
+	margin-top: 5px;
+}
+
+form .currentAttachment {
+	display: block;
+	font-size: 80%;
+	margin-left: 20%;
+	padding-top: 4px;
+}
+
+form .removeAttachment {
+    display: block;
+    font-size: 80%;
+    margin-left: 20%;
+}
+
+/** Footer **/
+
+#crud #crudFooter {
+	font-size: 80%;
+	color: #aaa;
+	padding: 10px 20px;
+	border-top: 1px dashed #aaa;
+	border-bottom: 1px dashed #aaa;
+	margin-top: 20px;
+}
+
+#crud #crudFooter a {
+	color: #333;
+}
+
+/** Home **/
+
+.crudNew {
+	text-align: right !important;
+}
+
+.crudNew a {
+	background: #0069d6;
+	padding: 5px 10px;
+	font-size: 90%;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	color: #fff !important;
+	text-decoration: none;
+}
+
+.crudNew a:hover {
+	opacity: .8;
+}
+
+/** List **/
+
+#crudList {
+	position: relative;
+}
+
+#crudListAdd a {
+	margin: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #0069d6;
+	padding: 5px 10px;
+	font-size: 90%;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	color: #fff !important;
+	text-decoration: none;
+}
+
+#crudListAdd a:hover {
+	opacity: .8;
+}
+
+#crudListSearch {
+	padding: 4px 5px;
+	border: 1px solid #ddd;
+	background: #efefef;
+}
+
+#crudListSearch input[type=text] {
+	width: 40%;
+}
+
+#crudListSearch a {
+	color: #111 !important;
+	font-size: 90%;
+}
+
+#crudListPagination {
+	padding: 4px 5px;
+	border: 1px solid #ddd;
+	background: #efefef;
+	border-top: 0;
+	font-size: 90%;
+	position: relative;
+}
+
+#crudListPagination .crudCount {
+	margin: 0;
+}
+
+#crudListPagination .crudPages {
+	margin: 0;
+	position: absolute;
+	right: 5px;
+	top: 4px;
+}
+
+/** Show **/
+
+#crudShow {
+	position: relative;
+}
+
+.crudDelete input {
+	border: none;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #C43C35;
+	padding: 5px 10px;
+	color: #fff;
+	font-size: 90%;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	cursor: pointer;
+	text-shadow: none;
+}
+
+.crudDelete input:hover {
+	opacity: .8;
+}

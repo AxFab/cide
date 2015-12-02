@@ -1,0 +1,62 @@
+<link href="@{'/public/stylesheets/widgets/menu/menu.css'}"
+	rel="stylesheet" type="text/css" />
+
+<div class="widget" id="widget-menu">
+	<img style="float: left; margin-right: 10px;"
+		src="/public/images/cide-icon.png" />
+	<ul class="nav">
+		<li class="dropdown"><a class="dropdown-toggle" href="#">File</a>
+			<ul class="dropdown-menu">
+				<li><a id="new-file-btn" href="#">New file</a></li>
+				<li><a id="new-folder-btn" href="#">New folder</a></li>
+				<li class="divider"></li>
+				<li><a id="delete-file-btn" href="#">Delete opened file</a></li>
+				<li class="divider"></li>
+				<li><a id="project-properties-btn" href="#">Project
+						properties</a></li>
+			</ul></li>
+		<li class="dropdown"><a class="dropdown-toggle" href="#">Edit</a>
+			<ul class="dropdown-menu">
+				<li><a id="undo-btn" href="#">Undo</a></li>
+				<li><a id="redo-btn" href="#">Redo</a></li>
+				<li class="divider"></li>
+				<li><a id="find-btn" href="#">Find...</a></li>
+				<li><a id="replace-btn" href="#">Replace...</a></li>
+				<!--<li class="divider"></li>
+				<li><a id="find-project-btn" href="#">Find in project</a></li>-->
+			</ul></li>
+		<li class="dropdown"><a class="dropdown-toggle" href="#">Tools</a>
+			<ul class="dropdown-menu">
+				<li><a id="editor-style-btn" href="#">Editor style</a></li>
+				<li class="divider"></li>
+				<li><a id="settings-btn" href="#">Main settings</a></li>
+			</ul></li>
+		<li class="dropdown"><a class="dropdown-toggle" href="#">Build
+				/ Run</a>
+			<ul class="dropdown-menu">
+				<li><a id="run-btn" href="#">Run project</a></li>
+				<li class="divider"></li>
+				<li><a id="build-btn" href="#">Build project</a></li>
+				<li><a id="clean-btn" href="#">Clean project</a></li>
+			</ul></li>
+	</ul>
+	<div style="float: right">
+		<ul class="nav">
+			<li class="dropdown"><a class="dropdown-toggle" href="#"><span
+					id="widget-menu-status" style="color: #0069D6"> O </span>
+					${session.get("user.firstname") + " " +
+					session.get("user.lastname")}</a>
+				<ul class="dropdown-menu">
+					<!--<li><a id="account-btn" href="#">Account</a></li>
+					<li class="divider"></li> -->
+					<li><a id="projects-list-btn" href="@{ProjectController.list}">Projects list</a>
+					
+					</li>
+					<li class="divider"></li>
+					<li><a id="logout-btn" href="@{UserController.logout}">Logout</a>
+					
+					</li>
+				</ul></li>
+		</ul>
+	</div>
+</div>
