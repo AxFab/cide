@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<script>
+var Cide = {};
+Cide.Server = new serverConnect();
+Cide.Server.getConnect ("@@{Socket.connect()}");
+
+
+Cide.Server.onReceive ("Bjr", Bjr);
+
+
+
+
+
+function Bjr () {
+	alert ("Bonjour");
+}
+function Send () {
+	var head = {};
+	head.destination = "Cide.ProjectManager";
+	head.source = "nowhere";
+	var body = {};
+	body.message = "openProject";
+	body.object = "hello";
+	Cide.Server.sendMsg (head, body);
+	return false;
+}
+
+$(document).ready(function() {
+	$(window).unload(function (){
+		Cide.Server.closeSocket();
+	});
+});
+</script>
+
+<h1>Yaouh !</h1>
+
+<input type="button" value="Send It" onClick="Send()" />
+

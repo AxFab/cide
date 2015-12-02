@@ -1,0 +1,13 @@
+tmp/*
+*.bat
+nbproject/*
+data/*
+conf/application.conf
+
+.classpath
+.project
+.settings
+eclipse
+.hg
+.hgignore
+*~

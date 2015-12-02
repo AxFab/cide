@@ -1,0 +1,39 @@
+/* Bootstrap overrides */
+.pull-right {
+    
+    color: white;
+}
+
+/* Layout style definitions */
+#layout-left {
+    
+    position: absolute;
+    bottom: 190px;
+    top: 50px;
+    left: 16px;
+    bottom: 250px;
+    width: 300px;
+    overflow: auto;
+}
+
+#layout-center {
+    
+    position: absolute;
+    
+    top: 50px;
+    left: 320px;
+    right: 16px;
+    bottom: 250px;
+}
+
+#layout-bottom {
+    
+  background-color: #fff;
+  height: 220px;
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 10000;
+  overflow: hidden;
+}

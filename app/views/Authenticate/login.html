@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/bootstrap.css'}"/>
+		<script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.1.min.js'}"></script>
+		<title>Authentication</title>
+	</head>
+    <body>
+		<div class="container">
+			<div class="row">
+				<div class="span-one-third">
+					<form style="margin-top:50px;" action="@{Authenticate.doLogin()}" method="post">
+						<fieldset>
+							<legend>Authentication</legend>
+							<div class="clearfix">
+								<div class="input" style="color:#f00">
+										#{error 'login' /}
+								</div>
+							</div>
+							<div class="clearfix">
+								<label>Username</label>
+								<div class="input">
+									<input type="text" name="username" value="" class="xlarge"/>
+									<div class="help-block">Enter your username</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<label>Password</label>
+								<div class="input">
+									<input type="password" name="password" value="" class="xlarge"/>
+									<div class="help-block">Enter your password</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="input">
+									<input style="float:right" class="btn primary" type="submit" value="Se connecter">
+									<br style="clear:both; visibility:hidden">
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<footer>
+				<p>&copy; Cide 2012</p>
+			</footer>
+		</div>
+	</body>
+</html>

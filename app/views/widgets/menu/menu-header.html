@@ -1,0 +1,100 @@
+<script src="@{'/public/javascripts/widgets/menu/menu.js'}"></script>
+<link href="@{'/public/stylesheets/widgets/menu/menu.css'}" rel="stylesheet" type="text/css" />
+
+<div class="widget" id="widget-menu-header">
+    <a class="brand" href="#" style="padding-left: 48px;">Cide</a>
+    <ul class="nav">
+        <li class="dropdown">
+            <a class="dropdown-toggle" href="#">File</a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a id="new-project-btn" href="#">New project</a>
+                </li>
+                <li>
+                    <a id="new-file-btn" href="#">New file</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="open-project-btn" href="#">Open project</a>
+                </li>
+                <li>
+                    <a id="open-file-btn" href="#">Open file</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="project-properties-btn" href="#">Project properties</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" href="#">Edit</a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a id="undo-btn" href="#">Undo</a>
+                </li>
+                <li>
+                    <a id="redo-btn" href="#">Redo</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="cut-btn" href="#">Cut</a>
+                </li>
+                <li>
+                    <a id="copy-btn" href="#">Copy</a>
+                </li>
+                <li>
+                    <a id="paste-btn" href="#">Paste</a>
+                </li>
+                <li>
+                    <a id="delete-btn" href="#">Delete</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="select-all-btn" href="#">Select all</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="find-btn" href="#">Find...</a>
+                </li>
+                <li>
+                    <a id="replace-btn" href="#">Replace...</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="find-project-btn" href="#">Find in project</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" href="#">Tools</a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a id="editor-style-btn" href="#">Editor style</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="settings-btn" href="#">Main settings</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" href="#">Build / Run</a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a id="run-btn" href="#">Run project</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a id="build-btn" href="#">Build project</a>
+                </li>
+                <li>
+                    <a id="clean-btn" href="#">Clean project</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p class="pull-right">
+        Logged in as
+        <a href="#">Gabriel Féron</a>
+    </p>
+</div>

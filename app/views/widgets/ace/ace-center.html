@@ -1,0 +1,31 @@
+<link href="@{'/public/stylesheets/widgets/ace/ace.css'}" rel="stylesheet" type="text/css" />
+
+<!-- Tabs for this widget -->
+<ul class="ui-widget-ace-tabs tabs">
+  <li class="active"><a href="#ui-widget-ace-tab1">Ace (tab 1)</a></li>
+  <li><a href="#ui-widget-ace-tab2">Ace (tab 2)</a></li>
+  <li><a href="#ui-widget-ace-tab3">Ace (tab 3)</a></li>
+</ul>
+ 
+<div class="pill-content">
+  <div class="active" id="ui-widget-ace-tab1">
+      <div class="widget" id="widget-ace-left"></div>
+  </div>
+  <div id="ui-widget-ace-tab2"></div>
+  <div id="ui-widget-ace-tab3"></div>
+</div>
+
+<div id="editor">
+            function foo(items) {
+            var i;
+            for (i = 0; i &lt; items.length; i++) {
+            alert("Ace Rocks " + items[i]);
+            }
+            }
+</div>
+
+<script src="@{'/public/javascripts/widgets/ace/ace.js'}" type="text/javascript" charset="utf-8"></script>
+<script src="@{'/public/javascripts/widgets/ace/theme-textmate.js'}" type="text/javascript" charset="utf-8"></script>
+<script src="@{'/public/javascripts/widgets/ace/mode-javascript.js'}" type="text/javascript" charset="utf-8"></script>
+<script src="@{'/public/javascripts/widgets/ace/kitchen-sink.js'}" data-ace-base="src" type="text/javascript" charset="utf-8"></script>
+<script src="@{'/public/javascripts/widgets/ace/ace-init.js'}" type="text/javascript" charset="utf-8"></script>

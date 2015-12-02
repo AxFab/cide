@@ -1,0 +1,8 @@
+<ul class="jqueryFileTree" style="display: static;">
+#{list items:directories, as:'directory'}
+    <li class="directory collapsed"><a href="#" rel="${rootPath + directory.getName() + '/'}">${directory.getName()}</a></li>
+#{/list}
+#{list items:files, as:'file'}
+    <li class="file ext_${ file.getExt() }"><a href="#" rel="${rootPath + file}">${file.getName()}</a></li>
+#{/list}
+</ul>

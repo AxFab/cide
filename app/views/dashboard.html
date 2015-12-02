@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <!-- jQuery -->
+        <script type="text/javascript" src="@{'/public/javascripts/jquery-1.7.1.min.js'}"></script>
+        
+        <!-- Twitter Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/bootstrap.css'}"/>
+        <script type="text/javascript" src="@{'/public/javascripts/bootstrap-dropdown.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/bootstrap-tabs.js'}"></script>
+        
+        <!-- CIDE -->
+        <script type="text/javascript" src="@{'/public/javascripts/cide-layout-manager.js'}"></script>
+        <script type="text/javascript" src="@{'/public/javascripts/cide-srvc.js'}"></script>
+        
+        <script type="text/javascript" src="@{'/public/javascripts/main.js'}"></script>
+        <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}"/>
+        
+        <script type="text/javascript">
+            
+            // Initialize the connection using WebSockets
+            var Cide = {};
+            //Cide.Server = new serverConnect();
+            //Cide.Server.getConnect ("@@{Socket.connect()}");
+            
+        </script>
+        
+        <title>${title}</title>
+    </head>
+    <body>
+        #{doLayout /}
+    </body>
+</html>

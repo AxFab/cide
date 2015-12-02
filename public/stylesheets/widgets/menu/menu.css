@@ -1,0 +1,147 @@
+.brand {
+    
+    background: url('/public/images/icon-32x32.png') no-repeat;
+    background-position: 8px 4px;
+}
+
+#new-project-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/folder_add.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#new-file-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/page_add.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#project-properties-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/folder_wrench.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#open-project-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/folder.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#open-file-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/page.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#undo-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/arrow_undo.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#redo-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/arrow_switch.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#cut-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/cut.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+
+#copy-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/page_copy.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+
+#paste-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/page_paste.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#delete-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/page_delete.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#find-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/page_find.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#replace-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/text_replace.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#find-project-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/folder_find.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#editor-style-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/style_edit.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#settings-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/wrench.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#run-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/package_green.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#build-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/arrow_rotate_anticlockwise.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+#clean-btn {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/rainbow.png') no-repeat 8px;
+    padding-left: 32px;
+}
+
+.pull-right {
+    
+    background-repeat: no-repeat;
+    background: url('/public/images/icons/user.png') no-repeat 8px 10px;
+    padding-left: 32px;
+}

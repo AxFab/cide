@@ -1,0 +1,59 @@
+<link href="@{'/public/stylesheets/widgets/browser/browser.css'}" rel="stylesheet" type="text/css" />
+<script src="@{'/public/javascripts/widgets/browser/browser.js'}"></script>
+
+<script>
+    
+    function refreshTree(message) {
+        
+        console.log(message);
+    }
+        
+    //.Server.onReceive("widget.browser", refreshTree);
+    
+    // Opening the project
+    // XXX: Remove, sucks
+    /*
+    var head = {};
+    head.destination = "Cide.ProjectManager";
+    head.source = "widget.browser";
+    var body = {};
+    body.message = "openProject";
+    body.object = "hello";
+    Cide.Server.sendMsg (head, body);
+    */
+    
+    $(document).ready( function() {
+    $('#widget-browser-left').fileTree({
+        root: '/usr/share/applications/'
+    }, function(file) {
+        alert(file);
+    });
+});
+
+function BrowserReceive (msg) {
+	console.log (msg);
+}
+
+</script>
+
+<!-- Tabs for this widget -->
+<ul class="ui-widget-browser-tabs tabs">
+  <li class="active"><a href="#ui-widget-browser-tab1">Project</a></li>
+  <li><a href="#ui-widget-browser-tab2">Files</a></li>
+  <li><a href="#ui-widget-browser-tab3">Services</a></li>
+</ul>
+ 
+<div class="pill-content">
+  <div class="active" id="ui-widget-browser-tab1">
+      <div class="widget" id="widget-browser-left"></div>
+  </div>
+  <div id="ui-widget-browser-tab2"></div>
+  <div id="ui-widget-browser-tab3"></div>
+</div>
+
+<script>
+    
+  $(function () {
+    $('.ui-widget-browser-tabs').tabs()
+  })
+</script>

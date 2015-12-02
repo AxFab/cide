@@ -1,0 +1,20 @@
+<link href="@{'/public/stylesheets/widgets/console/console.css'}" rel="stylesheet" type="text/css" />
+
+<script src="@{'/public/javascripts/widgets/console/jquery.terminal-0.4.5.js'}"></script>
+
+<ul class="ui-widget-console-tabs tabs">
+  <li class="active"><a href="#ui-widget-console-tab1">Terminal</a></li>
+  <li><a href="#ui-widget-console-tab2">Output</a></li>
+  <li><a href="#ui-widget-console-tab3">Tasks</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="ui-widget-console-tab1">
+      <div id="widget-console"></div>
+  </div>
+  <div class="tab-pane" id="ui-widget-console-tab2"></div>
+  <div class="tab-pane" id="ui-widget-console-tab3"></div>
+</div>
+
+
+<script src="@{'/public/javascripts/widgets/console/console.js'}"></script>

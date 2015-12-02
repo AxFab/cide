@@ -1,0 +1,32 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET	/                                       Application.index
+WS	/socket/connect				Socket.connect
+
+# Ignore favicon requests
+GET	/favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET	/public/                                staticDir:public
+GET	/data/                                  staticDir:data
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}
+
+#Authenticate
+GET		/login				    authenticate.login
+POST	/login				    authenticate.doLogin
+GET		/logout				    authenticate.logout
+
+# Dashboard
+GET     /dashboard                              dashboard.index
+
+# Widget manager
+GET     /widget/{widgetId}/{layoutId}           widgetManager.getWidget
+
+# Browser widget
+GET     /file                                   browserWidget.index
+POST    /file                                   browserWidget.index
